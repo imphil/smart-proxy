@@ -7,21 +7,20 @@
 #   ad
 #:realm_provider: freeipa
 
-# Authentication for Kerberos-based Realms
-# Secure the keytab with
-# #> chown foreman-proxy <KEYTAB_FILE>
-# #> chmod 600 <KEYTAB_FILE>
-:realm_keytab: /etc/foreman-proxy/freeipa.keytab
-:realm_principal: realm-proxy@EXAMPLE.COM
-
 # FreeIPA specific settings
 # Remove from DNS when deleting the FreeIPA entry
 :freeipa_remove_dns: true
 
 # Active Directory specific settings
 # Domain-specific computer account settings
+#
+# Make sure to secure the keytabs with
+# #> chown foreman-proxy <KEYTAB_FILE>
+# #> chmod 600 <KEYTAB_FILE>
+#
 #:ad_domain_mapping:
 #  org.example.com:
 #    computername_prefix: ORG-
 #    base_ou: OU=Linux,OU=Computers,OU=ORG,OU=EXAMPLE,OU=COM
-
+#    keytab: /etc/foreman-proxy/keytab/ORG.keytab
+#    principal: YOUR-ADMIN-USERNAME@ORG.EXAMPLE.COM
